@@ -1,0 +1,31 @@
+<side-menu
+    [content]="mycontent"
+    *ngIf="appConfig.userSettings.language != 'ar'"
+    (onFireMethod)="fireMethod($event)"
+    side="left"
+></side-menu>
+
+<side-menu
+    [content]="mycontent"
+    (onFireMethod)="fireMethod($event)"
+    *ngIf="appConfig.userSettings.language == 'ar'"
+    side="right"
+></side-menu>
+
+<div class="custom-popup" [@pushNotifAnimation] *ngIf="showPushNotification" #customCard>
+  <div class="notification-content" (click)="gotoTarget(notify)">
+    <!--<div (click)="closenotif()" class="animated fadeIn closenotifbtn" [style.animation-delay]="'1500ms'">
+      <ion-icon name="close">
+      </ion-icon>
+    </div>-->
+    <ion-item *ngFor="let notify of notifys">
+      <ion-avatar item-start>
+        <img [src]="notify.product?.src || 'assets/imgs/icon.png'">
+      </ion-avatar>
+      <h2>{{notify.product?.title}}</h2>
+      <p>{{notify.product?.description}}</p>
+    </ion-item>
+  </div>
+</div>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>

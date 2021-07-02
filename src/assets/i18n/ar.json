@@ -1,0 +1,160 @@
+{
+  "app": {
+    "name": "جدنا !"
+  },
+  "settings": {
+    "title": "تغيير اللغة",
+    "lang": "لغة",
+    "langs": {
+      "en": "English",
+      "ar": "العربية",
+      "fr": "francais"
+    }
+  },
+  "addproduct": {
+    "title": "عنوان",
+    "category": "الفئة",
+    "subcategory": "تصنيف فرعي",
+    "price": "السعر",
+    "description": "وصف",
+    "localisation": "الموقع",
+    "confirm": "تأكيد الإعلان",
+    "placeHolders": {
+      "title": "عنوان الاعلان",
+      "category": "اختر تصنيف",
+      "subcategory": "اختر تصنيف فرعى",
+      "price": "سعر المنتج",
+      "description": "إعلان وصف",
+      "localisation": "حدد مكان المنتج "
+    }
+  },
+  "errors": {
+    "required": "حقل إجباري",
+    "required_password": "كلمة المرور مطلوبة",
+    "required-pic": "يجب أن يحتوي إعلانك على صورة واحدة على الأقل",
+    "email_validation": "البريد الإلكتروني غير صالح",
+    "phone_validation": "رقم الجوال غير صالح",
+    "pass_conform": "كلمة المرور غير مطابقة",
+    "min-length": {
+      "8": "8 أحرف على الأقل",
+      "10": "10 أحرف على الأقل",
+      "3pic": "يمكنك فقط إضافة 3 صور",
+      "notConform": "كلمة المرور غير مطابقة"
+    }
+  },
+  "menu": {
+    "acceuil": "الرئيسية",
+    "Toutes_les_annonces": "جميع الإعلانات",
+    "Categories": "التصنيفات",
+    "Mes_favoris": "المفضلة",
+    "Recherche": "بحث",
+    "Mes_recherches": "بحثي",
+    "Creer_annonce": "أضف إعلان جديد",
+    "Mes_annonces": "إعلاناتي",
+    "identifier": "تسجيل الدخول",
+    "enregistrer": "تسجيل",
+    "Deconnexion": "خروج",
+    "Info": "معلومات"
+  },
+  "modals": {
+    "ok": "حسنا",
+    "cancel": "إلغاء"
+  },
+  "change_password": {
+    "change_password": "غير كلمة المرور",
+    "password": "كلمة المرور",
+    "new_password": "كلمة المرور الجديدة",
+    "change": "غير كلمة المرور"
+  },
+  "chat": {
+    "tapMsg": "رسالتك هنا .."
+  },
+  "confidentialite": {
+    "title": "الشروط العامة للبيع",
+    "text": "الشروط العامة للبيع هي المعلومات الإلزامية التي يجب على البائع تقديمها إلى الشخص الذي يشتري منتجًا أو خدمة. يشترط القانون تقديم بعض المعلومات بطريقة واضحة ، مثل السعر وطرق التسليم ومواعيد التسليم والتكاليف المرتبطة بالخدمة .."
+  },
+  "custom_card": {
+    "appel": "إتصل",
+    "annuler": "إلغاء",
+    "sms": "رسالة"
+  },
+  "not_found": {
+    "discussions": "لا مناقشات",
+    "recherches": "لا يوجد بحث قيد التقدم",
+    "favoris": "قائمة المفضلة الخاصة بك فارغة",
+    "annonces": "لا اعلانات"
+  },
+  "filter": {
+    "par_distance": "الأقرب",
+    "par_prix": "السعر",
+    "par_date": "الأحدث",
+    "Filtrer": "الترتيب",
+    "Annuler": "إلغاء"
+  },
+  "recherche": {
+    "Mes_recherches": "ابحاثي",
+    "oui": "نعم",
+    "non": "لا",
+    "Trouve": "تم العثور عليه",
+    "En_Cours": "في الأثناء",
+    "suivi": "متابعة"
+  },
+  "favoris": {
+    "Mes_favoris": "المفضلة",
+    "delete": "حذف",
+    "update": "تعديل",
+    "price_symbol": "د",
+    "km": "كم",
+    "favori": "مفضل",
+    "search": "ابحاث ..."
+  },
+  "home": {
+    "annonces": "إعلانات"
+  },
+  "info": {
+    "title": "معلومات"
+  },
+  "login": {
+    "title": "تسجيل الدخول",
+    "reset": "إعادة تعيين كلمة العبور",
+    "email": "البريد الإلكتروني",
+    "password": "كلمه السر",
+    "send_success": "تم إرسال البريد الإلكتروني بنجاح",
+    "send_info": "تم إرسال بريد إلكتروني لك لإعادة تعيين كلمة المرور الخاصة بك. "
+  },
+  "map": {
+    "CGV": "الشروط العامة للبيع",
+    "Go": "إنطلق"
+  },
+  "details": {
+    "evaluation": "تقييم",
+    "Description": "وصف",
+    "current_location": "الموقع الحالي",
+    "isit": "هل وجدته ؟"
+  },
+  "buttons": {
+    "confirm": "تأكيد"
+  },
+  "register": {
+    "title": "تسجيل",
+    "Profile": "الملف الشخصي",
+    "name": "الإسم",
+    "last_name": "اللقب",
+    "phone": "رقم الجوال - إختياري",
+    "confirm_pass": "تأكيد كلمة المرور",
+    "confirm": "تأكيد التسجيل",
+    "update": "تعديل"
+  },
+  "suivi": {
+    "find_key": "مفتاح البحث",
+    "what_search": "ما الذي تبحث عنه ؟",
+    "Min": "الحد الأدنى",
+    "Max": "الحد الأقصى",
+    "price": "السعر",
+    "ray": "نطاق البحث",
+    "color": "اللون",
+    "Distance": "قطر البحث",
+    "km": "كم",
+    "suivi": "بحث"
+  }
+}

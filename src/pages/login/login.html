@@ -1,0 +1,57 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar  color="logo">
+        <button ion-button menuToggle left>
+         <ion-icon name="menu"></ion-icon>
+        </button>
+       <ion-title>
+         {{'login.title'|translate}}
+       </ion-title>
+       <ion-buttons end>
+         <!-- <button ion-button>
+           <ion-icon name="search">
+           </ion-icon>
+         </button> -->
+       </ion-buttons>
+     </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <img src="../assets/imgs/icon.png" class="logoPosition" />
+<div #mailConfirmation   class="confirmation-modal">
+<h3>{{'login.send_success'|translate}}</h3>
+<p>{{'login.send_info'|translate}}</p>
+  </div>
+    <form class="form-position" [formGroup]='addReginForm'>
+        <ion-row>
+            <ion-item ion-col>
+                <ion-input formControlName="email" [(ngModel)]="user.email" type="emial" placeholder="{{'login.email'|translate}}"></ion-input>
+              </ion-item>
+        </ion-row>
+        <div *ngIf="(!addReginForm.controls.email.valid && (addReginForm.controls.email.dirty || submitReg))" class="erreurMsg">
+            <span>{{'errors.email_validation'|translate}}</span>
+        </div>
+
+        <ion-row>
+            <ion-item ion-col>
+                <ion-input formControlName="password" [(ngModel)]="user.password"  [type]="!showpassword ? 'password' : 'text'" placeholder="{{'login.password'|translate}}"></ion-input>
+              </ion-item>
+        </ion-row>
+        <div *ngIf="(!addReginForm.controls.password?.valid && (addReginForm.controls.password?.dirty || submitReg))" class="erreurMsg">&nbsp;
+            <span *ngIf="addReginForm.hasError('minlength',['password'])">{{'errors.min-length.8'|translate}}</span>
+            <span *ngIf="addReginForm.hasError('required',['password'])">{{'errors.required_password'|translate}}</span> 
+          &nbsp;
+        </div>
+        <button (click)="resetPassword()" type="button" ion-button class="reset-password-btn" clear color="primary">{{'login.reset'|translate}}</button>
+       <button (click)="userLogin()" full ion-button icon-left>
+       <ion-icon name="md-checkmark"></ion-icon>
+       {{'login.title'|translate}}
+       </button>
+      </form>
+</ion-content>

@@ -1,0 +1,19 @@
+page-sub-categories {
+    .scroll-content{
+        overflow: scroll !important;
+    }
+    .closebutton{
+        top: 4px!important;
+        font-size: 17px!important;
+        border-radius: 50%!important;
+        right: 4px!important;
+        color: white !important;
+        width: 32px!important;
+        height: 32px !important;
+    }
+    .item:last-child {
+        .item-inner {
+            border: none !important;
+        }
+    }
+}

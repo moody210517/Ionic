@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-navbar  color="logo">
+     <button ion-button menuToggle left>
+      <ion-icon name="menu"></ion-icon>
+     </button>
+    <ion-title>
+      <ion-icon class="header-search-logo" name="md-search"></ion-icon>{{'app.name'|translate}}
+    </ion-title>
+    <!-- <ion-searchbar class="headers-search" placeholder="On cherche quoi ?" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar> -->
+  </ion-navbar>
+  <div *ngIf="toogle_info" class="animated fadeInDown" id="containerInfo"> 
+      <ion-item class="first-item">
+          <ion-icon class="locate-logo" item-start name="md-search"></ion-icon>   
+          <ion-input type="text" [(ngModel)]="search_key" placeholder="On cherche quoi ?" clearInput></ion-input>
+        </ion-item>
+      <ion-item class="seconde-item">
+          <ion-icon class="locate-logo" item-start name="md-locate"></ion-icon>   
+          <ion-input type="text" [(ngModel)]="search_address"  placeholder="Region"></ion-input>
+          <button ion-button item-end (click)="getspeceficProducts()" primary [disabled]="!search_address?.length || !search_key?.length">
+              <h4  class='animated text-btn' [class.bounceIn]="search_address?.length && search_key?.length">Go</h4>
+          </button>
+        </ion-item>
+ </div>
+    </ion-header>
+
+<ion-content padding >
+    <div *ngIf="region && products.length == 0" class="no-content">
+        <h4>{{'not_found.annonces'|translate}}</h4>
+    </div>
+    
+    <div *ngIf="!region && products.length == 0" class="no-content">
+            <h4>{{'not_found.annonces'|translate}}</h4>
+        </div>
+    <ion-row *ngIf="products.length > 0" class="header-row">
+        <ion-col col-10>
+          <span *ngIf="counts_products"> {{counts_products}}</span>
+          <span *ngIf="!counts_products"> <ion-spinner  name="dots"></ion-spinner></span>
+          &nbsp;{{'home.annonces'|translate}}
+        </ion-col>
+        <ion-col (click)="switchtolist()" *ngIf="list" col-2>
+            <ion-icon name="md-grid"></ion-icon>
+        </ion-col>
+        <ion-col (click)="switchtolist()" *ngIf="!list" col-2>
+        <ion-icon name="md-list"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <!-- End Of Header -->
+      
+<ion-row *ngIf="!list">
+  <ion-col col-6 class="animated fadeIn"  *ngFor="let product of products;let i=index;" (click)="gotoDetails(product)" >
+      <ion-card class="product_cards">
+          <!-- <ion-fab   *ngIf="services.isLoggedIn"  top small right #fab4>
+            
+          <button ion-fab color="primary">
+             <ion-icon  class="favory" [name]="product.isfavory ? 'md-heart' :'heart-outline'"></ion-icon></button>
+          </ion-fab> -->
+
+          <div class="flag-price">
+            <h3 class="price">{{product.price || 0}}</h3>
+            <h3 class="euro">€</h3>
+          </div>
+          <img src="{{product.src}}" class="img-card" imageViewer/>
+          <img src="assets/imgs/logo.png" class="no-contain"/>
+          <ion-card-content>
+            <ion-card-title>
+              {{product.title}}
+              </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+  </ion-col>
+</ion-row>
+
+<ion-list *ngIf="list" class="chat-sliding-demo">
+      <ion-item (click)="gotoDetails(product)" [style.animation-delay]="(i*5)+'ms'" class='animated fadeInUp' *ngFor="let product of products;let i=index;" #item>
+        <ion-avatar  [style.animation-delay]="(i*5)+'ms'"  class='animated fadeIn' item-start>
+          <img  [src]="product.src" imageViewer>
+        </ion-avatar>
+        <h2>{{product.title}}</h2>
+        <p>{{product.description}}</p>
+        <ion-note item-end>
+          {{ change(product.created_at) | timeAgo}}
+        </ion-note>
+        <ion-row class="info-row">
+            <ion-col col-3>
+                <ion-note >
+                {{product.price}}
+                <span class="euro">&nbsp;{{'favoris.price_symbol'|translate}}</span>
+                </ion-note>
+            </ion-col>
+            <ion-col>
+                <ion-note>
+                    <ion-icon ios="ios-star" md="md-star">&nbsp;{{product.rate}}</ion-icon>
+                </ion-note>
+            </ion-col>
+            <ion-col col-4>
+                <ion-note >
+                <ion-icon ios="ios-star" md="md-people">&nbsp;{{product.visitor}}</ion-icon>
+                </ion-note>
+              </ion-col>
+          </ion-row>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

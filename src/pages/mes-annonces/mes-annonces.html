@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-navbar  color="logo">
+       <button ion-button menuToggle left>
+        <ion-icon name="menu"></ion-icon>
+       </button>
+      <ion-title>
+        <ion-icon class="header-search-logo" name="md-search"></ion-icon>{{'app.name'|translate}}
+      </ion-title>
+      <ion-buttons end>
+        <!-- <button ion-button>
+          <ion-icon name="search">
+          </ion-icon>
+        </button> -->
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+      <ion-searchbar [placeholder]="(category?.title || 'favoris.search'|translate)" showCancelButton color="danger" (ionInput)="getdatfromdateBase($event)"></ion-searchbar>
+      <div *ngIf="filtred.length == 0" class="no-content">
+          <h4>{{'not_found.annonces'|translate}}</h4>
+      </div>
+       <ion-spinner  name="dots" class="loadwhensearch" *ngIf="showspinner"></ion-spinner>
+      <ion-list class="chat-sliding-demo">
+    <ion-item-sliding class='animated fadeIn' *ngFor="let product of filtred;let i=index;" #item>
+      <ion-item (click)="gotoDiscussion(product)" >
+        <ion-avatar   class='animated fadeIn' item-start>
+          <img  [src]="product.src" imageViewer>
+       <ion-icon class="fav-icon" name="person"></ion-icon>
+        </ion-avatar>
+        <h2>{{product.title}}</h2>
+        <p>{{product.description}}</p>
+        <ion-note item-end>
+          {{ product.updated_at | timeAgo:'ar'}}
+        </ion-note>
+        <ion-row class="info-row">
+            <ion-col col-3>
+                <ion-note *ngIf="product.price" >
+                {{product.price}}
+                <span class="euro">{{'favoris.price_symbol'|translate}}</span>
+                </ion-note>
+            </ion-col>
+            <ion-col>
+                <ion-note >
+                    <ion-icon ios="ios-star" md="md-star">{{product.rate}}</ion-icon>
+                </ion-note>
+            </ion-col>
+            <ion-col col-4>
+                <ion-note >
+                <ion-icon ios="ios-star" md="md-people">{{product.visitor}}</ion-icon>
+                </ion-note>
+              </ion-col>
+          </ion-row>
+          <ion-icon class="custom-index" name="md-arrow-dropleft"></ion-icon>
+      </ion-item>
+  
+      <ion-item-options>
+        <button ion-button color="danger" (click)="delete(product,i)">
+          <ion-icon name="trash"></ion-icon>
+          {{'favoris.delete'|translate}}
+        </button>
+        <button ion-button color="primary" (click)="edit(product)">
+          <ion-icon name="ios-create-outline"></ion-icon>
+          {{'favoris.update'|translate}}
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    </ion-list>
+    <ion-infinite-scroll *ngIf=!searchterm  (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+  </ion-content>
+  

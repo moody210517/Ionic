@@ -1,0 +1,94 @@
+<ion-menu [content]="content" swipeEnabled="false" [side]="side" (ionOpen)="onOpen()">
+  <div class="header-wrapper">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title></ion-title>
+        <ion-buttons right>
+          <button ion-button clear icon-only menuClose>
+            <ion-icon name="md-close"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <div class="logo-container">
+      <img src="assets/imgs/icon.png" />
+    </div>
+  </div>
+  <ion-content>
+    <!--<div class="separator"></div>
+    <div class="headerBar">
+      <div class="logoback"></div>
+      <div class="logoContainer">
+        <img src="assets/imgs/icon.png" />
+      </div>
+    </div>-->
+    <!--<ion-icon name="close" class="animated fadeIn closebutton" menuClose></ion-icon>-->
+    <ion-list>
+      <button ion-item detail-none menuClose (click)="fireMethod('gotoHome')">
+        <ion-icon name="home" item-start color="therd"></ion-icon>
+        <ion-label color="dark">{{'menu.acceuil'|translate}}</ion-label>
+      </button>
+      <button ion-item detail-none menuClose (click)="fireMethod('goto', 'ProductsPage')">
+        <ion-icon name="ios-list-outline" item-start color="therd"></ion-icon>
+        <ion-label color="dark">{{'menu.Toutes_les_annonces'|translate}}</ion-label>
+      </button>
+      <button id="subCategoryBtn" ion-item detail-none (click)="showrow = !showrow"> 
+        <ion-icon name="md-list" item-start color="therd"></ion-icon>
+        <ion-label color="dark">{{'menu.Categories'|translate}}</ion-label>
+        <ion-icon [class.rotate-icon]="showrow" class="showRow" item-end name="md-arrow-dropright"></ion-icon>
+        <!--<ion-icon *ngIf="!showrow" class="showRowDown" item-end name="md-arrow-dropdown"></ion-icon>-->
+      </button>
+      <categories-list 
+        (onCategoryClick)="fireMethod('openCategoryModal', $event)"
+        [isVisible]="showrow">
+      </categories-list>
+      <button *ngIf="services.isLoggedIn" ion-item (click)="fireMethod('goto', 'FovoriesPage')" menuClose>
+        <ion-icon name="md-star" item-start color="therd"></ion-icon>
+        <ion-label color="dark">{{'menu.Mes_favoris'|translate}}</ion-label>
+      </button>
+
+      <button *ngIf="services.isLoggedIn" ion-item menuClose detail-none (click)="fireMethod('goto', 'SuiviPage')">
+        <ion-icon name="ios-locate-outline" item-start color="therd"></ion-icon>
+        <ion-label color="dark">{{'menu.Recherche'|translate}}</ion-label>
+      </button>
+
+      <button *ngIf="services.isLoggedIn" ion-item menuClose detail-none (click)="fireMethod('goto', 'FindersPage')">
+        <ion-icon name="md-search" item-start color="therd"></ion-icon>
+        <ion-label color="dark">{{'menu.Mes_recherches'|translate}}</ion-label>
+      </button>
+
+      <button *ngIf="services.isLoggedIn" ion-item menuClose detail-none (click)="fireMethod('goto', 'AddProductsPage')">
+        <ion-icon name="ios-create-outline" item-start color="therd"></ion-icon>
+        <ion-label color="dark">{{'menu.Creer_annonce'|translate}}</ion-label>
+      </button>
+
+      <button *ngIf="services.isLoggedIn" ion-item menuClose detail-none (click)="fireMethod('mes_Annonces')">
+        <ion-icon name="ios-albums-outline" item-start color="therd"></ion-icon>
+        <ion-label color="dark">{{'menu.Mes_annonces'|translate}}</ion-label>
+      </button>
+
+      <button *ngIf="!services.isLoggedIn" ion-item menuClose detail-none (click)="fireMethod('goto', 'LoginPage')">
+        <ion-icon name="ios-key-outline" item-start color="therd"></ion-icon>
+        <ion-label color="dark">{{'menu.identifier'|translate}}</ion-label>
+      </button>
+
+      <button *ngIf="!services.isLoggedIn" ion-item menuClose detail-none (click)="fireMethod('goto', 'RegisterPage')">
+        <ion-icon name="md-log-in" item-start color="therd"></ion-icon>
+        <ion-label color="dark">{{'menu.enregistrer'|translate}}</ion-label>
+      </button>
+
+      <button *ngIf="services.isLoggedIn" ion-item menuClose detail-none (click)="fireMethod('logout')">
+        <ion-icon name="md-log-out" item-start color="therd"></ion-icon>
+        <ion-label color="dark">{{'menu.Deconnexion'|translate}}</ion-label>
+      </button>
+      <!--<button (click)="fireMethod('openLangModal')" ion-item menuClose detail-none>
+        <ion-icon name="md-globe" item-start color="therd"></ion-icon>
+        <ion-label color="dark">{{'settings.lang'|translate}}</ion-label>
+      </button>-->
+      <button (click)="fireMethod('openInfoModal')" ion-item menuClose detail-none>
+        <ion-icon name="ios-information-circle-outline" item-start color="therd"></ion-icon>
+        <ion-label color="dark">{{'menu.Info'|translate}}</ion-label>
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>

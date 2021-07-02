@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar  color="logo">
+    <ion-buttons start>
+      <button  ion-button (click)="whengetout()" icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+       </button>
+    </ion-buttons>
+      <ion-title>
+          {{product_target.title}}
+      </ion-title>
+ 
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+    <ion-item (click)="gobackProduct(product_target)"  class="current_product">
+        <ion-avatar class='animated fadeIn' item-start>
+          <img  [src]="product_target.src || (product_target.galleries && product_target.galleries[0].url)" imageViewer>
+        </ion-avatar>
+        <h2>{{product_target.title}}</h2>
+        <p>{{product_target.description}}</p>
+        <ion-note item-end>
+          {{product_target.time}}
+        </ion-note>
+        <ion-row class="info-row">
+            <ion-col col-3>
+                <ion-note >
+                {{product_target.price}}
+                <span class="euro">€</span>
+                </ion-note>
+            </ion-col>
+            <ion-col>
+                <ion-note >
+                    <ion-icon ios="ios-star" md="md-star">{{product_target.rate}}</ion-icon>
+                </ion-note>
+            </ion-col>
+            <ion-col col-4>
+                <ion-note >
+                <ion-icon ios="ios-star" md="md-people">{{product_target.visitor?.visitors || product_target.visitor}}</ion-icon>
+                </ion-note>
+              </ion-col>
+          </ion-row>
+      </ion-item>
+
+    <div *ngFor="let groupedMsgList of groupedMessages ">
+        <ion-item-group>
+          <ion-item-divider sticky class="text-center">
+            <h3 class="day-label">{{ groupedMsgList.key}}</h3>
+          </ion-item-divider>
+          <div class="message-wrap">
+            <div *ngFor="let msg of groupedMsgList.value" class="message" [class.left]="msg.createdBy !== services.current_user.id" [class.right]="msg.createdBy === services.current_user.id">
+              <div class="msg-detail">
+                <div class="msg-content">
+                  <p class="username">{{msg.user?.last_name}}</p>
+                  <span class="triangle"></span>
+                  <p class="line-breaker">{{msg.message}}</p>
+                </div>
+                <div class="msg-info">
+                  {{ msg.created_at | dateFormat : 'HH:mm' }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-item-group>
+      </div>
+      <!-- [@isTypingAnimation] -->
+      <div class="is-typing-dots" [@isTypingAnimation]  *ngIf="isTyping">
+          <ion-spinner name="dots"></ion-spinner>
+        </div>
+    
+</ion-content>
+<ion-footer>
+    <ion-row>
+      <ion-col col-10>
+        <ion-textarea #chat_input placeholder="{{'chat.tapMsg'|translate}}" [(ngModel)]="newMsg" (keydown)="onTyping()"  (ionFocus)="onFocus()"></ion-textarea>
+      </ion-col>
+      <ion-col col-2 id="send">
+        <button ion-button clear icon-only (click)="sendMsg()">
+          <ion-icon class='animated' [class.bounceIn]="newMsg?.length" name="ios-send" ios="ios-send" md="md-send"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-footer>

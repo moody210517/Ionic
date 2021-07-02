@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-navbar  color="logo">
+       <button ion-button menuToggle left>
+        <ion-icon name="menu"></ion-icon>
+       </button>
+      <ion-title>
+        <ion-icon class="header-search-logo" name="md-search"></ion-icon>{{'app.name'|translate}}
+      </ion-title>
+      <ion-buttons end>
+        <!-- <button ion-button>
+          <ion-icon name="search">
+          </ion-icon>
+        </button> -->
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+      <ion-searchbar [placeholder]="(category?.title ||'favoris.Mes_favoris'|translate)" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
+      <div *ngIf="filtred.length == 0" class="no-content">
+          <h4>{{'not_found.favoris'|translate}}</h4>
+      </div>
+      <ion-list class="chat-sliding-demo">
+    <ion-item-sliding (click)="gotoDetails(product)" class='animated fadeIn' *ngFor="let product of filtred;let i=index;" #item>
+      <ion-item>
+        <ion-avatar   class='animated fadeIn' item-start>
+          <img  [src]="product.src" imageViewer>
+       <ion-icon class="fav-icon" name="star"></ion-icon>
+        </ion-avatar>
+        <h2>{{product.title}}</h2>
+        <p>{{product.description}}</p>
+        <ion-note item-end>
+          {{ product.updated_at | timeAgo:'ar'}}
+        </ion-note>
+        <ion-row class="info-row">
+            <ion-col col-3>
+                <ion-note *ngIf="product.price" >
+                {{product.price}}
+                <span class="euro">{{'favoris.price_symbol'|translate}}</span>
+                </ion-note>
+            </ion-col>
+            <ion-col>
+                <ion-note >
+                    <ion-icon ios="ios-star" md="md-star">{{product.rate}}</ion-icon>
+                </ion-note>
+            </ion-col>
+            <ion-col col-4>
+                <ion-note >
+                <ion-icon ios="ios-star" md="md-people">{{product.visitor}}</ion-icon>
+                </ion-note>
+              </ion-col>
+          </ion-row>
+      </ion-item>
+  
+      <ion-item-options>
+        <button ion-button color="danger" (click)="delete(product)">
+          <ion-icon name="trash"></ion-icon>
+          {{'favoris.delete'|translate}}
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    </ion-list>
+  </ion-content>
+  

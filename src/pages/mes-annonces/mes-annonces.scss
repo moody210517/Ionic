@@ -1,0 +1,106 @@
+page-mes-annonces {
+        .item-md ion-avatar ion-img, .item-md ion-avatar img{
+            border-radius: 4px!important;
+            overflow: hidden;
+            width: 87px;
+            height: 87px;
+            object-fit: cover;
+        }
+        .item{
+            box-shadow: 0 0 3px 1px  rgba(0, 0, 0, 0.58);
+            margin-bottom: 4px;
+            .item-inner{
+                padding-left: 7px!important;
+                ion-label{
+                    margin-top: 3px!important;
+                }         }
+        }
+        .note{
+            color:map-get($colors, therd );
+            font-weight: bolder;
+        }
+        .custom-index{ 
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: rgba(255, 0, 0, 0.6);
+        font-size: 25px;
+        font-weight: bold;
+    }
+    
+        .col{
+            align-content: center;
+            text-align: center;
+            align-items: center;
+            align-self: center;
+        }
+        ion-avatar{
+            position: relative;
+            overflow: hidden;
+        } 
+        ion-avatar::after{
+            content: "";
+            width: 100%;
+            height: 30%;
+            -webkit-transform: rotate(50deg);
+            transform: rotate(41deg);
+            height: 100%;
+            position: absolute;
+            bottom: -52%;
+            right: -74%;
+            z-index: 0;
+            box-shadow: 5px 12px 20px 0px #000000d9;
+            background:map-get($colors, therd );
+        }
+        .fav-icon{
+            position: absolute;
+            z-index: 99999;
+            color: white;
+            bottom: 9%;
+            font-size: 16px;
+           
+            right: 4%;
+        }
+    
+        .item-md [item-left], .item-md [item-right], .item-md [item-start], .item-md [item-end] {
+            margin: 9px 2px 9px 0!important;
+        }
+    
+        .info-row{
+            position: absolute!important;
+            z-index: 9999!important;
+            width: 65%;
+            text-overflow: ellipsis;
+            margin-left: 2%;
+            .col{
+                align-content: center;
+                text-align: center;
+                align-items: center;
+                align-self: center;
+                .icon{
+                    letter-spacing: 5px;
+                }
+            }
+        }
+
+        .loadwhensearch{
+            position: relative;
+            z-index:999;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 10px 0px;
+        }
+
+        .searchbar-md{
+            @include rtl(){
+            direction:rtl!important;
+            .searchbar-input-container{
+                direction:rtl!important;
+                .searchbar-input{
+                    direction:rtl!important;
+                }
+            }
+        }
+        }
+
+}

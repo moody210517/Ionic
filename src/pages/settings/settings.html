@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>{{'settings.title' | translate}}</ion-title>
+        <ion-buttons end>
+          <button navPop ion-button clear icon-only>
+            <ion-icon name="md-close"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-select okText="{{'modals.ok'|translate}}" cancelText="{{'modals.cancel'|translate}}" [(ngModel)]="userSettings.language" (ngModelChange)="changeLanguage(userSettings.language)">
+      <ion-option   [selected]="appConfig.userSettings.language==='en'" value="en">{{'settings.langs.en'|translate}}</ion-option>
+      <ion-option  [selected]="appConfig.userSettings.language==='ar'"  value="ar">{{'settings.langs.ar'|translate}}</ion-option>
+      <ion-option  [selected]="appConfig.userSettings.language==='fr'"  value="fr">{{'settings.langs.fr'|translate}}</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-content>

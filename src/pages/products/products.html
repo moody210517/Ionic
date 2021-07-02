@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar  color="logo">
+     <button ion-button menuToggle left>
+      <ion-icon name="menu"></ion-icon>
+     </button>
+    <ion-title>
+      <ion-icon class="header-search-logo" name="md-search"></ion-icon>{{'app.name'|translate}}
+    </ion-title>
+    <ion-buttons end>
+      <button (click)="openfilter()" ion-button>
+        <ion-icon name="md-options">
+        </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar [placeholder]="(category?.title || 'suivi.what_search'|translate)" showCancelButton color="danger" (ionInput)="getdatfromdateBase($event)"></ion-searchbar>
+    <div *ngIf="filtred.length == 0" class="no-content">
+      <h4>{{'not_found.annonces'|translate}}</h4>
+  </div>
+  <ion-spinner  name="dots" class="loadwhensearch" *ngIf="showspinner"></ion-spinner>
+    <ion-list class="chat-sliding-demo">
+  <ion-item-sliding class='animated fadeIn' *ngFor="let product of filtred;let i=index;" #item>
+    <ion-item [class.itemisit]="product.person.isIt">
+      <ion-avatar class='animated fadeIn' item-start>
+          <ion-fab *ngIf="(selected!=i)&& product.voice.length>0" (click)="playAudio(product,i)" class="micposition"  item-start>
+              <button logo mini ion-fab>
+                <ion-icon name="md-play">
+                </ion-icon>
+              </button>
+            </ion-fab>
+        <img  [src]="product.src" imageViewer>
+        <div *ngIf="selected==i" class="effectposition" id="bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+      </ion-avatar>
+      <h2 (click)="gotoDetails(product)">{{product.title}}</h2>
+      <p (click)="gotoDetails(product)">{{product.description}}</p>
+      <ion-note (click)="gotoDetails(product)" item-end>
+          {{ product.updated_at | timeAgo:'ar'}}
+      </ion-note>
+      <ion-row (click)="gotoDetails(product)" class="info-row">
+          <ion-col col-3>
+              <ion-note *ngIf="product.price" >
+              {{product.price}}
+              <span class="euro">€</span>
+              </ion-note>
+          </ion-col>
+          <ion-col>
+              <ion-note *ngIf="getDistanceFromLatLonInKm(product)">
+                  {{getDistanceFromLatLonInKm(product)}}&nbsp;{{'favoris.km'|translate}}
+              </ion-note>
+              <ion-spinner *ngIf="!getDistanceFromLatLonInKm(product)">
+              </ion-spinner>
+          </ion-col>
+          <ion-col col-4>
+              <ion-note >
+              <ion-icon ios="ios-star" md="md-people">{{product.visitor}}</ion-icon>
+              </ion-note>
+            </ion-col>
+        </ion-row>
+    </ion-item>
+    <ion-item-options *ngIf="services.isLoggedIn" side="left">
+      <button ion-button color="logo" expandable (click)="favoris(product)">
+        <ion-icon name="star" class="expand-hide"></ion-icon>
+        <div class="expand-hide">{{'favoris.favori'|translate}}</div>
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+  </ion-list>
+  <ion-infinite-scroll *ngIf=!searchterm (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-content>

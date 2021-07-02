@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons left>
+      <button ion-button clear icon-only navPop>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{ receiver.name }}</ion-title>
+    <!-- <ion-buttons right>
+      <button ion-button clear icon-only (click)="pickImage()">
+        <ion-icon name="md-images"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #content>
+  <ion-item (click)="gobackProduct(conversation.product)" class="current_product">
+    <ion-avatar class='animated fadeIn' item-start>
+      <img [src]="conversation.product?.src || (conversation.product?.galleries && conversation.product?.galleries[0].url)" imageViewer>
+    </ion-avatar>
+    <h2>{{conversation.product?.title}}</h2>
+    <p>{{conversation.product?.description}}</p>
+    <ion-note item-end>
+      {{conversation.product?.time}}
+    </ion-note>
+    <ion-row class="info-row">
+      <ion-col col-3>
+        <ion-note>
+          {{conversation.product?.price}}
+          <span class="euro">€</span>
+        </ion-note>
+      </ion-col>
+      <ion-col>
+        <ion-note>
+          <ion-icon ios="ios-star" md="md-star">{{conversation.product?.rate}}</ion-icon>
+        </ion-note>
+      </ion-col>
+      <ion-col col-4>
+        <ion-note>
+          <ion-icon ios="ios-star" md="md-people">{{conversation.product?.visitor?.visitors || conversation.product?.visitor}}
+          </ion-icon>
+        </ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+
+  <ion-infinite-scroll *ngIf="isInfinitScrollEnabled" (ionInfinite)="initChat($event)" position="top">
+    <ion-infinite-scroll-content loadingSpinner="dots">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <div *ngFor="let groupedMsgList of groupedMessages ">
+    <ion-item-group>
+      <ion-item-divider sticky class="text-center">
+        <h3 class="day-label">{{ groupedMsgList.key }}
+        </h3>
+      </ion-item-divider>
+      <div class="message-wrap">
+        <div *ngFor="let msg of groupedMsgList.value" class="message" [class.left]="msg.sender.id !== services.current_user.id"
+          [class.right]="msg.sender.id === services.current_user.id">
+          <div class="msg-detail">
+            <!-- <span class="triangle"></span> -->
+            <div class="msg-content" [class.image-content]="msg.image">
+              <p class="username">{{msg.sender?.name}}</p>
+              <img *ngIf="msg.image" imageViewer class="image-msg" [src]="msg.image">
+              <p class="line-breaker text-msg" *ngIf="msg.body">{{msg.body}}</p>
+            </div>
+            <div class="msg-info">
+              {{msg.created_at | dateFormat : 'HH:mm'}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-item-group>
+  </div>
+  <!-- [@isTypingAnimation] -->
+  <div class="is-typing-dots" [@isTypingAnimation] *ngIf="isTyping">
+    <ion-spinner name="dots"></ion-spinner>
+  </div>
+
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col col-10>
+      <ion-textarea elasticTextArea (onResize)="content.resize()" [placeholder]="'chat.tapMsg'|translate" [(ngModel)]="newMsg"
+        (keydown)="onTyping()" (ionFocus)="onFocus()"></ion-textarea>
+    </ion-col>
+    <ion-col col-2 id="send">
+      <button ion-button clear icon-only (click)="send()" [disabled]="!newMsg?.length">
+        <ion-icon class='animated' [class.bounceIn]="newMsg?.length" name="ios-send" ios="ios-send" md="md-send">
+        </ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

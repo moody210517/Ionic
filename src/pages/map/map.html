@@ -1,0 +1,76 @@
+<!--
+  Generated template for the MapPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar  color="logo">
+     <button  ion-button menuToggle start>
+      <ion-icon name="menu"></ion-icon>
+     </button>
+    <ion-title>
+      <ion-icon class="header-search-logo" name="md-search"></ion-icon>{{'app.name'|translate}}
+    </ion-title>
+    <ion-buttons (click)="profileEdit()" *ngIf="services.isLoggedIn"  end>
+        <button class="left-bar"  ion-button>
+            <ion-icon name="person"><span class="loggedname">{{services.current_user.last_name}}</span></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="container"  #mainContainer>
+    <ion-col class="logo-container" col-12>
+      <img class="logo"  src="assets/imgs/icon.png" #logo/>
+    </ion-col>
+    <ion-row [class.rowupdatefocus]="focused" >
+        <ion-col col-2></ion-col>
+        <!-- <ion-col class="icon-col"  col-2>
+            <ion-icon class="locate-logo" name="md-search"></ion-icon>          
+          </ion-col>
+        <ion-col class="text-col" col-8>
+          <ion-input (blur)="changePositionBlur($event)" (focus)="changePosition($event)" (input)="filterItems($event)" #chat_input [(ngModel)]="address" placeholder="On cherche Où ?"></ion-input>
+        </ion-col> -->
+        <ion-col   class="icon2-col" col-8 id="send">
+            <!--(click)="gotoHome()"  [disabled]="!chosedRegion" -->
+          <button  ion-button (click)="gotoHome()"    primary >
+            <h4  class='animated text-btn' [class.bounceIn]="!chosedRegion">{{'map.Go'|translate}}</h4>
+          </button>
+        </ion-col>
+        <ion-col col-2></ion-col>
+      </ion-row>
+   
+
+    </div>
+    <ion-row *ngIf="autocomplete && focused " [class.rowupdatelist]="focused"  class="autocomplete" >
+        <ion-col col-2>
+                   
+          </ion-col>
+        <ion-col col-8>
+         <ion-item (click)="choseRegion(filter)" *ngFor="let filter of filtred;let i=index;">
+           {{filter.name}}
+         </ion-item>
+        </ion-col>
+        <ion-col col-2 >
+        </ion-col>
+      </ion-row>
+    <img class="bg" src="../assets/imgs/maps.png">
+  </ion-content>
+  <ion-footer>
+      <ion-row class="menu-footer">
+              <ion-col (click)="openModal('ConfidentialitePage')">
+              <span class="footeralign leftside">
+                {{'map.CGV'|translate}}  
+              </span>        
+              </ion-col>
+              <ion-col (click)="openModal('ApropoPage')">
+              <span  class="footeralign rightside">
+             <ion-icon name="md-help-circle"></ion-icon>
+            </span>
+              </ion-col>
+      </ion-row>
+    </ion-footer>
+

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "586038491325",
+    "firebase_url": "https://onatrouver.firebaseio.com",
+    "project_id": "onatrouver",
+    "storage_bucket": "onatrouver.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586038491325:android:be1d4208de4c9678",
+        "android_client_info": {
+          "package_name": "com.convertoagency.onatrouve"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586038491325-3oanl6de0c5qbo52qu6d613d9ldusub4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWicI_yFA7s1nRM3eEOmEku950ikQcfNQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

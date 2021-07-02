@@ -1,0 +1,79 @@
+<ion-header>
+    <ion-navbar  color="logo">
+       <button ion-button menuToggle left>
+        <ion-icon name="menu"></ion-icon>
+       </button>
+      <ion-title>
+          <ion-icon class="header-search-logo" name="md-search"></ion-icon>{{'app.name'|translate}}
+      </ion-title>
+      <ion-buttons end>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content>
+<form class="animated fadeIn" [formGroup]='FindProduct'>
+    <ion-item>
+        <ion-label  color="logo"  stacked class="mylab">{{'addproduct.category'|translate}}</ion-label>
+        <ion-select  (ionChange)="loadSubcategories($event)" [(ngModel)]="selectedC"  formControlName="category"  placeholder="{{'addproduct.placeHolders.category'|translate}}">
+          <ion-option *ngFor="let category of categorys;let i=index;" [value]="category">
+                    {{category.title}}
+          </ion-option>
+        </ion-select>
+</ion-item>
+
+<div *ngIf="(!FindProduct.controls.category?.valid && (FindProduct.controls.category?.dirty || submit))" class="erreurMsg">{{'errors.required'|translate}}</div>
+
+<ion-item>
+    <ion-label  color="logo"  stacked class="mylab">{{'addproduct.subcategory'|translate}}</ion-label>
+    <ion-select (ionChange)="loadproperties($event)"  formControlName="subcategory"  placeholder="{{'addproduct.placeHolders.subcategory'|translate}}">
+      <ion-option *ngFor="let subcategory of subcategories;let i=index;" [value]="subcategory">
+                {{subcategory.title}}
+      </ion-option>
+    </ion-select>
+</ion-item>
+
+<div *ngIf="(!FindProduct.controls.subcategory?.valid && (FindProduct.controls.subcategory?.dirty || submit))" class="erreurMsg">{{'errors.required'|translate}}</div>
+
+      <ion-item no-lines>
+          <ion-label  color="logo"  stacked class="mylab">{{'suivi.find_key'|translate}} </ion-label>
+          <ion-input id="title" [(ngModel)]="suivi.name"  maxLength="500" formControlName="title"  placeholder="{{'suivi.what_search'|translate}}"></ion-input>
+      </ion-item>
+      <div  *ngIf="(FindProduct.hasError('required',['title'])) && submit"  class="erreurMsg resizer" item-end >{{'errors.required'|translate}}</div>      
+<ion-row class="animated fadeIn" *ngIf="selectedSub.has_price" class="p5 pt5">
+  <ion-col class="color-map"  color="logo" >
+    {{'suivi.price'|translate}}
+  </ion-col>
+ </ion-row>
+<ion-row class="animated fadeIn" *ngIf="selectedSub.has_price" class="p5">
+  <ion-col>
+      <ion-input  placeholder="{{'suivi.Min'|translate}}" min='0' [max]="suivi.price_max"  type="number" formControlName="price_min" [(ngModel)]="suivi.price_min"></ion-input>
+      </ion-col>
+      <ion-col>
+      <ion-input  placeholder="{{'suivi.Max'|translate}}" [min]='suivi.price_min' max="99999999" type="number" formControlName="price_max" [(ngModel)]="suivi.price_max"></ion-input>
+      </ion-col>
+</ion-row>
+<div  *ngIf="(FindProduct.hasError('required',['price_min'])||FindProduct.hasError('required',['price_max'])) && submit"  class="erreurMsg resizer" item-end >{{'errors.required'|translate}}</div> 
+      <ion-item no-lines>
+        <ion-icon name="ios-locate-outline" item-start color="danger"></ion-icon>
+        <ion-label>{{'suivi.ray'|translate}}</ion-label>
+        <ion-toggle  [(ngModel)]="suivi.locate" formControlName="locate" color="secondary"></ion-toggle>
+      </ion-item>
+      <ion-row class="animated fadeIn" *ngIf="suivi.locate">
+        <ion-col class="centred-item" col-3>
+          <h3 class="Mylabel">{{'suivi.Distance'|translate}}</h3>
+        </ion-col>
+      
+            <ion-select formControlName="range"  class="centred-item" [(ngModel)]="suivi.range"   ion-col col-5 placeholder="00">
+              <ion-option value="{{number}}" *ngFor="let number of metre;">
+                {{number}}
+              </ion-option>
+            </ion-select>
+            <span class="centred-item" class="color-map"  col-4>{{'suivi.km'|translate}}</span>
+        </ion-row>
+      <button (click)='suiviAnnonce()' full ion-button icon-left>
+          <ion-icon name="search"></ion-icon>
+          {{'suivi.suivi'|translate}}
+      </button>
+</form>
+</ion-content>

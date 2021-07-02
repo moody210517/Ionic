@@ -1,0 +1,160 @@
+{
+  "app": {
+    "name": "Founder"
+  },
+  "settings": {
+    "title": "Change the language",
+    "lang": "Language",
+    "langs": {
+      "en": "English",
+      "ar": "العربية",
+      "fr": "francais"
+    }
+  },
+  "addproduct": {
+    "title": "Title",
+    "category": "Category",
+    "subcategory": "Sub-category",
+    "price": "Price",
+    "description": "Description",
+    "localisation": "Location",
+    "confirm": "Confirm ad",
+    "placeHolders": {
+      "title": "Ad Title",
+      "category": "Select a category",
+      "subcategory": "Select a subcategory",
+      "price": "Product price",
+      "description": "Description ad",
+      "localisation": "Locate the product "
+    }
+  },
+  "errors": {
+    "required": "Required Field",
+    "required_password": "Password required",
+    "required-pic": "Your ad must contain at least one image",
+    "email_validation": "Invalid Email Format",
+    "phone_validation": "Invalid number format",
+    "pass_conform": "Illegal password",
+    "min-length": {
+      "8": "Minimum 8 characters",
+      "10": "Minimum 10 characters",
+      "3pic": "You can only add 3 photos",
+      "notConform": "Illegal password"
+    }
+  },
+  "menu": {
+    "acceuil": "Home",
+    "Toutes_les_annonces": "All ads",
+    "Categories": "Categories",
+    "Mes_favoris": "My favourites",
+    "Recherche": "Research",
+    "Mes_recherches": "My research",
+    "Creer_annonce": "Create an ad",
+    "Mes_annonces": "My ads",
+    "identifier": "Identify",
+    "enregistrer": "Register",
+    "Deconnexion": "Logout",
+    "Info": "Info"
+  },
+  "modals": {
+    "ok": "Okay",
+    "cancel": "Cancel"
+  },
+  "change_password": {
+    "change_password": "Change password",
+    "password": "Password",
+    "new_password": "Password",
+    "change": "Change password"
+  },
+  "chat": {
+    "tapMsg": "Your message here .."
+  },
+  "confidentialite": {
+    "title": "GCS",
+    "text": "The general conditions of sale (GCS) are the mandatory information that the seller must provide to the person who purchases a product or service. The law requires that certain information be presented in a clear manner, such as the price, delivery methods, delivery times, costs associated with the service ..."
+  },
+  "custom_card": {
+    "appel": "Call",
+    "annuler": "Cancel",
+    "sms": "Message"
+  },
+  "not_found": {
+    "discussions": "No Discussions",
+    "recherches": "No research in progress",
+    "favoris": "Your favorites list is empty",
+    "annonces": "No Ads"
+  },
+  "filter": {
+    "par_distance": "By distance",
+    "par_prix": "By price",
+    "par_date": "By date",
+    "Filtrer": "Filter",
+    "Annuler": "Cancel"
+  },
+  "recherche": {
+    "Mes_recherches": "My researches",
+    "oui": "Yes",
+    "non": "No",
+    "Trouve": "Find",
+    "En_Cours": "In progress",
+    "suivi": "Follow-up"
+  },
+  "favoris": {
+    "Mes_favoris": "My favourites",
+    "delete": "Remove",
+    "update": "Edit",
+    "price_symbol": "$",
+    "km": "km",
+    "favori": "Favorite",
+    "search": "Research ..."
+  },
+  "home": {
+    "annonces": "Ads"
+  },
+  "info": {
+    "title": "Info"
+  },
+  "login": {
+    "title": "Identify",
+    "reset": "Reset password",
+    "email": "E-mail",
+    "password": "Password",
+    "send_success": "Email sent successfully",
+    "send_info": "An email has been sent to you to reset your password. "
+  },
+  "map": {
+    "CGV": "GCS",
+    "Go": "Go"
+  },
+  "details": {
+    "evaluation": "evaluation",
+    "Description": "Description",
+    "current_location": "Current Location",
+    "isit": "Is it !!"
+  },
+  "buttons": {
+    "confirm": "Confirm"
+  },
+  "register": {
+    "title": "Registe",
+    "Profile": "Profile",
+    "name": "Last name",
+    "last_name": "First name",
+    "phone": "Phone number - optional",
+    "confirm_pass": "Confirm password",
+    "confirm": "Confirm registration",
+    "update": "Edit"
+  },
+  "suivi": {
+    "find_key": "Search key",
+    "what_search": "What are we looking for ?",
+    "Min": "Min",
+    "Max": "Max",
+    "price": "Price",
+    "ray": "Search radius",
+    "color": "color",
+    "Distance": "Distance",
+    "km": "Km",
+    "suivi": "Follow"
+  }
+}

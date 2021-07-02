@@ -1,0 +1,34 @@
+<ion-card class="animated bounceIn contact-card">
+  <ion-icon name="close" class="animated fadeIn closebutton" (click)="cancel()"></ion-icon>
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="notify.product.src">
+       </ion-avatar>
+      <h2>{{notify.product.title}}</h2>
+      <p>{{notify.product.description}}</p>
+    </ion-item>
+  
+    <ion-item>
+      <ion-icon name="ios-contact-outline" item-start large ></ion-icon>
+      <h2>{{profile?.name}}</h2>
+      <p>{{profile?.email}}</p>
+    </ion-item>
+  
+    <ion-item>
+         <ion-icon name="md-phone-portrait" item-start large ></ion-icon>
+         <h2>{{profile?.phone}}</h2>
+    </ion-item>
+  <ion-item>
+      <span item-start>({{notify.product.price}} €)</span>
+      <span item-start>{{notify.product.visitor}} v</span>
+      <button (click)="dialCall()"  ion-button icon-start clear item-end>
+        <ion-icon name="md-call"></ion-icon>
+        {{'custom_card.appel'|translate}}
+      </button>
+
+      <button (click)="SendSms()"  ion-button icon-start clear item-end>
+        <ion-icon name="ios-chatbubbles"></ion-icon>
+        {{'custom_card.sms'|translate}}
+      </button>
+    </ion-item>
+  </ion-card>

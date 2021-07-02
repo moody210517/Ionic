@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar color="logo">
+    <button ion-button menuToggle left>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'recherche.Mes_recherches'|translate}}
+
+    </ion-title>
+    <ion-buttons end>
+      <!-- <button ion-button>
+          <ion-icon name="search">
+          </ion-icon>
+        </button> -->
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="!recherches || recherches.length == 0" class="no-content">
+    <h4>{{'not_found.recherches'|translate}} </h4>
+  </div>
+  <ion-list>
+    <ion-item *ngFor="let recherche of recherches;let i = index">
+      <ion-icon name="ios-trash-outline" class="animated fadeIn closecustom" (click)="delete(recherche.id,i)">
+      </ion-icon>
+      <ion-avatar (click)="goto(recherche.product)" *ngIf="recherche.product" item-start>
+        <img [src]="recherche.product.galleries[0].url">
+      </ion-avatar>
+      <h2 class="center-text touppercase">{{recherche.name}}</h2>
+      <hr>
+      <p>
+        <span *ngIf="recherche.product" class="oui" ion-item>
+          <ion-icon name="md-done-all" item-start></ion-icon> {{'recherche.Trouve'|translate}}
+        </span>
+        <span *ngIf="!recherche.product" class="non" ion-item>
+          <ion-icon name="md-search" item-start></ion-icon> {{'recherche.En_Cours'|translate}}
+        </span>
+
+        <span class="content-info" ion-item>
+          <ion-icon name="ios-pricetags-outline" item-start></ion-icon>{{recherche.subcategory.category.title}}
+          &nbsp;/&nbsp;{{recherche.subcategory.title}}
+        </span>
+        <span *ngIf="recherche.locate && recherche.product?.price" class="content-info" ion-item>
+          <ion-icon name="logo-euro" item-start></ion-icon>{{recherche.product.price}}
+        </span>
+        <span class="content-info" ion-item>
+          <ion-icon name="ios-locate-outline" item-start></ion-icon>{{'recherche.suivi'|translate}} :&nbsp;
+
+          <span *ngIf="recherche.locate" class="oui">
+            {{'recherche.oui'|translate}}
+          </span>
+
+          <span *ngIf="!recherche.locate" class="non">
+            {{'recherche.non'|translate}}
+          </span>
+        </span>
+      </p>
+    </ion-item>
+  </ion-list>
+</ion-content>

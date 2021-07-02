@@ -1,0 +1,6 @@
+<ion-content>
+    <ion-icon name="close" class="animated fadeIn closebutton" (click)="closeView()"></ion-icon>
+    <ion-item *ngFor="let category of subcategories;let i=index" (click)="dismiss(category)">
+        {{category.title}}
+      </ion-item>
+</ion-content>

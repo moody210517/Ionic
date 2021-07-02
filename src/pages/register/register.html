@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-navbar  color="logo">
+        <button *ngIf="!isProfile" ion-button menuToggle left>
+         <ion-icon name="menu"></ion-icon>
+        </button>
+       <ion-title>
+          <span *ngIf="!isProfile">{{'register.title'|translate}}</span>
+          <span *ngIf="isProfile">{{'register.Profile'|translate}}</span>
+       </ion-title>
+       <ion-buttons *ngIf="isProfile"  end>
+          <button (click)="closeModal()"  ion-button>
+              <ion-icon class="close-modal" name="close"></ion-icon>
+          </button>
+        </ion-buttons>
+     </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <form  [formGroup]='addReginForm'>
+        <ion-row>
+          <ion-item class="custom-col no-margin" ion-col>
+            <ion-input formControlName="name"  [(ngModel)]="user.name" type="text" placeholder="{{'register.name'|translate}}"></ion-input>
+          </ion-item>
+          
+          <ion-item  class="custom-col no-margin" ion-col>
+            <ion-input formControlName="last_name" [(ngModel)]="user.last_name" type="text" placeholder="{{'register.last_name'|translate}}"></ion-input>
+          </ion-item>
+        </ion-row>
+        <div  *ngIf="(addReginForm.hasError('required',['name'])||addReginForm.hasError('required',['last_name'])) && submitReg"  class="erreurMsg resizer" item-end >{{'errors.required'|translate}}</div>
+        <ion-row class="custom-col">
+            <ion-item ion-col>
+                <ion-input formControlName="email" [(ngModel)]="user.email" type="emial" placeholder="Email"></ion-input>
+              </ion-item>
+        </ion-row>
+        <div *ngIf="(!addReginForm.controls.email.valid && (addReginForm.controls.email.dirty || submitReg))" class="erreurMsg">
+            <span>{{'errors.email_validation'|translate}}</span>
+        </div>
+        <ion-row class="custom-col">
+            <ion-item ion-col>
+                <ion-input formControlName="phone" [(ngModel)]="user.phone"  type="tel" placeholder="{{'register.phone'|translate}}"></ion-input>
+              </ion-item>
+        </ion-row>
+        <ion-row *ngIf="!isProfile" class="custom-col">
+            <ion-item ion-col>
+                <ion-input formControlName="password" [(ngModel)]="user.password"  [type]="!showpassword ? 'password' : 'text'" placeholder="Mot de passe"></ion-input>
+              </ion-item>
+        </ion-row>
+        <div *ngIf="(!addReginForm.controls.password?.valid && (addReginForm.controls.password?.dirty || submitReg) && !isProfile)" class="erreurMsg">&nbsp;
+            <span *ngIf="addReginForm.hasError('minlength',['password'])">{{'errors.min-length.8'|translate}}</span>
+            <span *ngIf="addReginForm.hasError('required',['password'])">{{'errors.required'|translate}}</span> 
+          &nbsp;
+        </div>
+        <ion-row *ngIf="!isProfile"  class="custom-col">
+            <ion-item ion-col>
+                <ion-input formControlName="vpassword" [type]="!showpassword ? 'password' : 'text'" placeholder="{{'register.confirm_pass'|translate}}"></ion-input>
+              <ion-icon *ngIf="!showpassword" (click)="cahngepasswordView()" color="primary" item-end name="eye">
+              </ion-icon>
+              <ion-icon *ngIf="showpassword" (click)="cahngepasswordView()" color="primary" item-end name="eye-off">
+                </ion-icon>
+              </ion-item>
+        </ion-row>
+        <div *ngIf="(!addReginForm.controls.vpassword?.valid && (addReginForm.controls.vpassword?.dirty || submitReg)&& !isProfile)" class="erreurMsg">&nbsp;
+            <span *ngIf="addReginForm.hasError('required',['vpassword'])">{{'errors.required'|translate}}</span> 
+            <span *ngIf="addReginForm.hasError('notEquivalent',['vpassword'])">{{'errors.pass_conform'|translate}}</span> 
+            &nbsp;
+          </div>
+
+  
+    <button (click)="userDataSubmit()" full ion-button icon-left>
+        <ion-icon name="md-checkmark"></ion-icon>
+        <span *ngIf="!isProfile">{{'register.confirm'|translate}}</span>
+        <span *ngIf="isProfile">{{'register.update'|translate}}</span>
+       </button>
+      </form>
+</ion-content>

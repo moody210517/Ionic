@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CDansLeCoin</string>
+    <string name="title_activity_main">CDansLeCoin</string>
+    <string name="package_name">com.convertoagency.onatrouve</string>
+    <string name="custom_url_scheme">com.convertoagency.onatrouve</string>
+    <string name="mauron85_bgloc_content_authority">authority</string>
+    <string name="mauron85_bgloc_account_type">authority type</string>
+</resources>

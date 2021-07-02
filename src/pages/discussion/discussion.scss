@@ -1,0 +1,37 @@
+page-discussion {
+.touppercase{
+    text-transform: uppercase!important;
+}
+.item{
+    border-radius: 8px!important;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.319)!important;
+    margin-bottom:10px;
+}
+.content-info{
+    box-shadow: none!important;
+    padding-left: 0px!important;
+    min-height:0!important;
+    *{
+        font-size:13px!important;
+    }
+    .label{
+        margin:0px!important;
+        color:rgb(129, 129, 129);
+
+    }
+    .icon{
+        font-size:16px!important;
+        margin:0px!important;
+        padding-top: 7px!important;
+        color:rgb(129, 129, 129);
+    }
+}
+
+.item-md ion-avatar ion-img, .item-md ion-avatar img{
+    width: 59px;
+    height: 59px;
+}
+.item-inner{
+    margin-left: 14px!important;
+}
+}

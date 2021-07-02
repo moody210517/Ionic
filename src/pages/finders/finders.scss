@@ -1,0 +1,70 @@
+page-finders {
+    .touppercase{
+        text-transform: uppercase!important;
+    }
+    .item{
+        border-radius: 8px!important;
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.319)!important;
+        margin-bottom:15px !important;
+        border: none !important;
+    }
+    .content-info{
+        box-shadow: none!important;
+        padding-left: 0px!important;
+        min-height:0!important;
+        *{
+            font-size:13px!important;
+        }
+        .label{
+            margin:0px!important;
+            color:rgb(129, 129, 129);
+    
+        }
+        .icon{
+            font-size:16px!important;
+            margin:0px!important;
+            padding-top: 7px!important;
+            color:rgb(129, 129, 129);
+        }
+    }
+    
+    .item-md ion-avatar ion-img, .item-md ion-avatar img{
+        width: 59px;
+        height: 59px;
+        object-fit: cover;
+    }
+    .item-inner{
+        margin-left: 14px!important;
+    }
+
+    .closecustom{
+        position: absolute;
+        z-index: 9999;
+        font-size: 22px;
+        top: 0px;
+        right: 0px;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius:5px;
+        text-align: center;
+        box-shadow: 0 0 2px 0px rgba(0, 0, 0, 0.212);
+        background-color: map-get($colors, danger);
+        display: flex;
+        align-content: space-around;
+        align-items: center;
+        justify-content: center;
+      }
+      .oui{
+          color:green;
+          font-weight: 800;
+      }
+      .non{
+        color:map-get($colors , danger );
+        font-weight: 800;
+    }
+
+    .label{
+        white-space: normal;
+    }
+}

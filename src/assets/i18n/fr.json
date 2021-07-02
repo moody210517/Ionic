@@ -1,0 +1,160 @@
+{
+  "app": {
+    "name": "n a trouvé !"
+  },
+  "settings": {
+    "title": "Changer la langue",
+    "lang": "Langue",
+    "langs": {
+      "en": "English",
+      "ar": "العربية",
+      "fr": "francais"
+    }
+  },
+  "addproduct": {
+    "title": "Titre",
+    "category": "Catégorie",
+    "subcategory": "Sous-Catégorie",
+    "price": "Prix",
+    "description": "Description",
+    "localisation": "Localisation",
+    "confirm": "Confirmer l'annonce",
+    "placeHolders": {
+      "title": "Titre de l’annonce",
+      "category": "Sélectionner une catégorie",
+      "subcategory": "Sélectionner une sous-catégorie",
+      "price": "Prix ​​du produit",
+      "description": "Description de l'annonce",
+      "localisation": "Localiser le produit "
+    }
+  },
+  "errors": {
+    "required": "Champ obligatoire",
+    "required_password": "Mot de passe obligatoire",
+    "required-pic": "Votre annonce doit contenir au moins une image",
+    "email_validation": "Format d'Email non valide",
+    "phone_validation": "Format numéro non valide",
+    "pass_conform": "Mot de passe non conforme",
+    "min-length": {
+      "8": "Minimum 8 caractères",
+      "10": "Minimum 10 caractères",
+      "3pic": "Vous ne pouvez ajouter que 3 photos",
+      "notConform": "Mot de passe Non Conforme"
+    }
+  },
+  "menu": {
+    "acceuil": "Accueil",
+    "Toutes_les_annonces": "Toutes les annonces",
+    "Categories": "Catégories",
+    "Mes_favoris": "Mes favoris",
+    "Recherche": "Recherche",
+    "Mes_recherches": "Mes recherches",
+    "Creer_annonce": "Créer une annonce",
+    "Mes_annonces": "Mes annonces",
+    "identifier": "S'identifier",
+    "enregistrer": "S'enregistrer",
+    "Deconnexion": "Déconnexion",
+    "Info": "Info"
+  },
+  "modals": {
+    "ok": "D'accord",
+    "cancel": "Annuler"
+  },
+  "change_password": {
+    "change_password": "Changer de Mot de passe",
+    "password": "Mot de passe",
+    "new_password": "Mot de passe",
+    "change": "Changer de Mot de passe"
+  },
+  "chat": {
+    "tapMsg": "Votre message ici ..."
+  },
+  "confidentialite": {
+    "title": "CGV",
+    "text": " Les conditions générales de vente (CGV) sont les informations obligatoires que le vendeur doit fournir à la personne qui achète un produit ou un service. La loi impose que certaines informations soient présentées de manière claire, comme le prix, les modalités de livraison, les délais de livraison, les frais associés à la prestation ..."
+  },
+  "custom_card": {
+    "appel": "Appel",
+    "annuler": "Annuler",
+    "sms": "Chat"
+  },
+  "not_found": {
+    "discussion": "Pas des  Discussions",
+    "recherches": "Pas de recherche en cours",
+    "favoris": "Ta liste de favoris est vide",
+    "annonces": "Pas des Annonces"
+  },
+  "filter": {
+    "par_distance": "Par distance",
+    "par_prix": "Par prix",
+    "par_date": "Par date",
+    "Filtrer": "Filtrer",
+    "Annuler": "Annuler"
+  },
+  "recherche": {
+    "Mes_recherches": "Mes recherches",
+    "oui": "oui",
+    "non": "non",
+    "Trouve": "Trouvé",
+    "En_Cours": "En Cours",
+    "suivi": "Suivi de la recherche"
+  },
+  "favoris": {
+    "Mes_favoris": "Mes favoris",
+    "delete": "Supprimer",
+    "update": "Modifier",
+    "price_symbol": "€",
+    "km": "km",
+    "favori": "Favori",
+    "search": "Recherche ..."
+  },
+  "home": {
+    "annonces": "annonces"
+  },
+  "info": {
+    "title": "Info"
+  },
+  "login": {
+    "title": "S'identifier",
+    "reset": "Réinitialiser le mot de passe",
+    "email": "Email",
+    "password": "Mot de passe",
+    "send_success": "Email envoyé avec succés",
+    "send_info": "Un email t'a été envoyé pour réinitialiser ton mot de passe. "
+  },
+  "map": {
+    "CGV": "CGV",
+    "Go": "Go"
+  },
+  "details": {
+    "evaluation": "évaluation",
+    "Description": "Description",
+    "current_location": "Localisation Actuelle",
+    "isit": "C'est l'annonce  !!"
+  },
+  "buttons": {
+    "confirm": "Confirmer"
+  },
+  "register": {
+    "title": "S'enregistrer",
+    "Profile": "Profile",
+    "name": "Nom",
+    "last_name": "Prénom",
+    "phone": "Numéro de mobile - facultatif",
+    "confirm_pass": "Confirmer le mot de passe",
+    "confirm": "Confirmer l'enregistrement",
+    "update": "Modifier"
+  },
+  "suivi": {
+    "find_key": "Clé de recherche",
+    "what_search": "On cherche quoi ?",
+    "Min": "Min",
+    "Max": "Max",
+    "price": "Prix",
+    "ray": "Rayon de recherche",
+    "color": "color",
+    "Distance": "Distance",
+    "km": "Km",
+    "suivi": "Suivi"
+  }
+}

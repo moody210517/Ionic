@@ -1,0 +1,84 @@
+page-suivi {
+    ion-textarea,ion-select,ion-input{
+        border: 2px solid rgba(map-get($colors ,logo),$alpha: .7);
+        padding:7px!important;
+        width: 100%!important;
+        padding-left: 5px;
+        border-radius: 5px;
+    }
+.Mylabel{
+font-size:1.5rem;
+margin-bottom:0px!important;
+margin-top: 5px;
+color: map-get($colors , logo );
+    }
+.label{
+    margin-bottom: 10px!important;
+    font-size: 1.6rem!important;
+}
+    .colorpikker{
+        position: relative;
+        width: 100%;
+        font-weight: bolder;
+        font-size:1.5rem;
+        color:map-get($colors , logo );
+    }
+.item{
+    background-color:transparent!important;
+}
+    .colorpiker{
+        border:1px solid rgb(161, 161, 161);
+        background: rgb(161, 161, 161);
+        border-radius:20px;
+        width: 100%;
+        height: 40px;
+        border-radius:2px;
+    }
+    .color-picker{
+        width: 230px!important;
+        top: 55px!important;
+        left: 0px!important;
+        position: absolute!important;
+    }
+
+    form{
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+        padding: 5px;
+    }
+    ion-input{
+        padding: 0px !important; 
+        padding-left: 10px!important;
+    }
+
+    .centred-item{
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .p5{
+        padding: 0px 5px!important;
+    }
+    .pt5{
+        padding-top:10px !important;
+    }
+    .color-map{
+        color:map-get($colors, logo );
+    }
+
+    .customhr{
+     border-bottom:1px solid #0000002c;
+     padding-bottom:25px;
+    }
+
+    [class~='customhr']:last-of-type  {
+        border-bottom:0px!important;
+        padding-bottom:5px!important;
+    }
+    .button{
+        background: map-get($colors, logo )!important;
+    }
+}

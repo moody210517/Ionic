@@ -1,0 +1,153 @@
+
+<ion-header>
+    <ion-navbar  color="logo">
+       <button ion-button menuToggle left>
+        <ion-icon name="menu"></ion-icon>
+       </button>
+      <ion-title>
+          <ion-icon class="header-search-logo" name="md-search"></ion-icon>{{'app.name'|translate}}          
+      </ion-title>
+      <ion-buttons end>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+<ion-content>
+    <div class="main">
+        <form [formGroup]='AddProducts'>
+          <ion-item>
+            <ion-label  color="logo"  stacked class="mylab">{{'addproduct.title'|translate}}</ion-label>
+            <ion-input id="title"  maxLength="500" formControlName="title" [(ngModel)]="product.title"  placeholder="{{'addproduct.placeHolders.title'|translate}}"></ion-input>
+          </ion-item>
+          <div *ngIf="(!AddProducts.controls.title?.valid && (AddProducts.controls.title?.dirty || add_procuct))" class="animated fadeIn erreurMsg">{{'errors.required'|translate}}</div>
+          <ion-item>
+                  <ion-label  color="logo"  stacked class="mylab">{{'addproduct.category'|translate}}</ion-label>
+                  <ion-select [compareWith]="compareFn" (ionChange)="loadSubcategories($event)" [(ngModel)]="selectedC"  formControlName="category"  placeholder="{{'addproduct.placeHolders.category'|translate}}">
+                    <ion-option  *ngFor="let category of categorys;let i=index;" [value]="category">
+                              {{category.title}}
+                    </ion-option>
+                  </ion-select>
+          </ion-item>
+
+          <div *ngIf="(!AddProducts.controls.category?.valid && (AddProducts.controls.category?.dirty || add_procuct))" class="animated fadeIn erreurMsg">{{'errors.required'|translate}}</div>
+          
+          <ion-item>
+              <ion-label  color="logo"  stacked class="mylab">{{'addproduct.subcategory'|translate}}</ion-label>
+              <ion-select (ionChange)="loadproperties($event)" formControlName="subcategory"  [(ngModel)]="selectedCategory"  placeholder="{{'addproduct.placeHolders.subcategory'|translate}}">
+                <ion-option *ngFor="let subcategory of subcategories;let i=index;" [value]="subcategory.id">
+                          {{subcategory.title}}
+                </ion-option>
+              </ion-select>
+      </ion-item>
+
+          <div *ngIf="(!AddProducts.controls.subcategory?.valid && (AddProducts.controls.subcategory?.dirty || add_procuct))" class="animated fadeIn erreurMsg">{{'errors.required'|translate}}</div>
+          
+          <ion-item class="animated fadeIn" *ngIf="selectedC.title!='EMPLOI'">
+              <ion-label  color="logo"  stacked class="mylab">{{'addproduct.price'|translate}}</ion-label>
+              <ion-input id="price"  formControlName="price" type="number" [(ngModel)]="product.price"  placeholder="{{'addproduct.placeHolders.price'|translate}}"></ion-input>
+            </ion-item>
+          <div *ngIf="(!AddProducts.controls.price?.valid && (AddProducts.controls.price?.dirty || add_procuct) && selectedC.title!='EMPLOI')" class="animated fadeIn erreurMsg">{{'errors.required'|translate}}</div>
+          <ion-item>
+          <!-- <div  class="progress blue" (click)="playAudio()"  item-start top center>
+                  <span class="progress-left">
+                      <span *ngIf="go" class="progress-bar"  [style.animation-delay]="(audioDuration/2)+'s'" [style.animation-duration]="(audioDuration/2)+'s'"></span>
+                  </span>
+                  <span class="progress-right" >
+                      <span  *ngIf="go" class="progress-bar" [style.animation-duration]="(audioDuration/2)+'s'"></span>
+                  </span>
+                  <div class="progress-value">
+                      <ion-icon name="play"></ion-icon> 
+                    </div>
+              </div> -->
+              <!-- ^^^^^^^^ -->
+              <ion-fab  class="customfab"  item-start top right >
+                  <button *ngIf="!startRecord" (click)="startAudioRecorde()"  logo mini ion-fab>
+                    <ion-icon name="md-mic">
+                    </ion-icon>
+                  </button>
+                  <button *ngIf="startRecord"  (click)="showAndPlay()"  logo mini ion-fab>
+                    <ion-icon name="md-pause">
+                    </ion-icon>
+                  </button>
+              </ion-fab>
+
+              <ion-fab  class="customfabplay"  item-start middle right >
+                <button *ngIf="!isplaying" (click)="playAudio()"  logo mini ion-fab>
+                  <ion-icon name="md-play">
+                  </ion-icon>
+                </button>
+                <button *ngIf="isplaying" (click)="pauseAudio()"  logo mini ion-fab>
+                  <ion-icon name="md-pause">
+                  </ion-icon>
+                </button>
+            </ion-fab>
+
+
+          <ion-label  color="logo"  stacked class="mylab">{{'addproduct.description'|translate}}</ion-label>
+          <ion-textarea fz-elastic id="Area"  maxLength="500" formControlName="description" [(ngModel)]="product.description"  placeholder="{{'addproduct.placeHolders.description'|translate}}">
+            <audio *ngIf="showplay" #audioID class="animated fadeInUp" controls>
+            </audio>
+          </ion-textarea>
+        </ion-item>
+        <div *ngIf="(!AddProducts.controls.description.valid && (AddProducts.controls.description.dirty || add_procuct))" class="animated fadeIn erreurMsg">
+          <span *ngIf="AddProducts.hasError('minlength',['description'])">{{'errors.min-length.10'|translate}}</span>
+          <span *ngIf="AddProducts.hasError('required',['description'])">{{'errors.required'|translate}}</span>
+        </div>
+          <!-- <ion-item>
+          <ion-label  color="logo"  stacked class="mylab">Region </ion-label>
+          <ion-select   formControlName="region"  [(ngModel)]="selectedRegion"  placeholder="Selectionner La Region">
+            <ion-option *ngFor="let region of regions;let i=index;" value="{{region.id}}">
+                      {{region.name}}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <div *ngIf="(!AddProducts.controls.region?.valid && (AddProducts.controls.region?.dirty || add_procuct))" class="animated fadeIn erreurMsg">{{'errors.required'|translate}}</div> -->
+        <ion-item (click)="showMap()" >
+          <ion-label  color="logo"  stacked class="mylab">{{'addproduct.localisation'|translate}}</ion-label>
+          <ion-input type="text" disabled  formControlName="address" name="address" [(ngModel)]="product.address.address"   placeholder="{{'addproduct.placeHolders.localisation'|translate}}"></ion-input>
+        </ion-item>
+        <div *ngIf="(!AddProducts.controls.address?.valid && (AddProducts.controls.address?.dirty || add_procuct))" class="animated fadeIn erreurMsg">{{'errors.required'|translate}}</div>
+       
+       <!-- Start Properties -->
+       <div *ngFor="let property of selectedProperties;let i=index;">
+        <ion-item class="animated fadeIn"  >
+          <ion-label  color="logo"  stacked class="mylab">{{property.key}}</ion-label>
+          <ion-datetime formControlName="{{property.key}}" *ngIf="property.type=='date'" displayFormat="MM/DD/YYYY" placeholder="{{property.key}}" [(ngModel)]="propertyModel[property.id]"></ion-datetime>
+          <ion-input formControlName="{{property.key}}" [(ngModel)]="propertyModel[property.id]" *ngIf="property.type=='number'" type="number" placeholder="{{property.key}}"></ion-input>
+          <ion-input formControlName="{{property.key}}" [(ngModel)]="propertyModel[property.id]" *ngIf="property.type=='text'" type="text" placeholder="{{property.key}}"></ion-input>
+          <ion-select formControlName="{{property.key}}" [(ngModel)]="propertyModel[property.id]"  *ngIf="property.type=='select'" placeholder="{{property.key}}">
+            <ion-option *ngFor="let option of property.responces;let i=index;" value="{{option.id}}">
+                      {{option.value}}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <div *ngIf="(!AddProducts.get(property.key).valid && (AddProducts.get(property.key).dirty || add_procuct))" class="animated fadeIn erreurMsg">
+          {{'errors.required'|translate}}
+        </div>
+      </div>
+        <!--End Insert Custom Properties -->
+        
+        <div *ngIf="arrayImages.length >3" class="animated fadeIn erreurMsg">
+          <span>{{'errors.min-length.3pic'|translate}}</span>
+        </div>
+           <div class="slideContent">
+              <ion-slides loop='false' [pager]="arrayImages.length > 1" #slides> 
+                <ion-slide  *ngFor="let img of arrayImages;let i = index" >
+                  <img [src]='img'>
+                  <ion-fab  top left>
+                    <button ion-fab mini (click)="deleteImage(img, i)"><ion-icon name="ios-trash-outline"></ion-icon></button>
+                  </ion-fab>
+                </ion-slide>
+              </ion-slides>
+              <ion-fab *ngIf="arrayImages.length <3" bottom right class="addPic">
+                  <button  mini ion-fab  (click)="pictureType()" ><ion-icon name="ios-camera"></ion-icon></button>
+                </ion-fab>
+       </div>
+       <div *ngIf="(arrayImages.length ==0 && add_procuct)" class="animated fadeIn erreurMsg">{{'errors.required-pic'|translate}}</div>
+       
+       <button full ion-button icon-left (click)="sendingData()">
+        <ion-icon name="md-checkmark"></ion-icon>
+        {{'addproduct.confirm'|translate}}
+       </button>
+              </form>
+          </div>
+</ion-content>

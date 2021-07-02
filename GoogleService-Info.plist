@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>586038491325-t85nl31dt2m6ohl4b7tqot2qbd5csvb3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.586038491325-t85nl31dt2m6ohl4b7tqot2qbd5csvb3</string>
+	<key>API_KEY</key>
+	<string>AIzaSyANo3t_pevmeoYVUYCzld_ex8YTjT1bfZU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>586038491325</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.convertoagency.onatrouve</string>
+	<key>PROJECT_ID</key>
+	<string>onatrouver</string>
+	<key>STORAGE_BUCKET</key>
+	<string>onatrouver.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:586038491325:ios:25969ca2277945fa351fd4</string>
+	<key>DATABASE_URL</key>
+	<string>https://onatrouver.firebaseio.com</string>
+</dict>
+</plist>

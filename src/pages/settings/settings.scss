@@ -1,0 +1,42 @@
+page-settings {
+
+  .scroll-content::before {
+    opacity: .1;
+  }
+
+  .item {
+    background: transparent;
+  }
+
+  .notifications-settings {
+    padding: 10px;
+    border: 2px solid #a358a3;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
+
+  .notifications-settings-header {
+    margin-top: 20px;
+    font-size: 20px;
+    padding: 5px 10px;
+    background: #a358a3;
+    color: #ffffff;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    // border-bottom: 3px solid #a358a3;
+  }
+  ion-select{
+    max-width:none!important;
+    .select-icon{
+      @include rtl(){
+      position: absolute;
+      left: 9px!important;
+      
+    }
+    @include ltr(){
+      position: absolute;
+      right: 9px!important;
+    }
+    }
+  }
+}
